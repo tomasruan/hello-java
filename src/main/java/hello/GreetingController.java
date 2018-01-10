@@ -6,13 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class GreetingController {
-
-    @RequestMapping("/greeting")
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, 
-    					   Model model) {
-        model.addAttribute("name",name);
-        return "greeting";
-    }
+public class GreetingTranslator {
+	
+	public String sayHelloIn(String lang) {
+		String hello;
+		if ("en".equals(lang)) {
+			hello = "hello";
+		} else if ("es".equals(lang)) {
+			hello = "hola";
+		} else {
+			hello = "no hablo tu idioma";
+		}
+	}
 
 }
